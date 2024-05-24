@@ -9,10 +9,16 @@ import { Env } from 'src/env'
     PassportModule,
     JwtModule.registerAsync({
       inject: [ConfigService],
-      useFactory: (config: ConfigService<Env, true>) => ({
-        secret: config.get('JWT_SECRET'),
-        signOptions: { expiresIn: '7d' },
-      }),
+      global: true,
+      useFactory: (config: ConfigService<Env, true>) => {
+        const privateKey = config.get('JWT_PRIVATE_KEY', { infer: true })
+        const publicKey = config.get('JWT_PUBLIC_KEY', { infer: true })
+        return {
+          signOptions: { algorithm: 'RS256' },
+          publicKey: Buffer.from(publicKey, 'base64'),
+          privateKey: Buffer.from(privateKey, 'base64'),
+        }
+      },
     }),
   ],
 })

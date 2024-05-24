@@ -4,7 +4,8 @@ export const envSchema = z.object({
   DATABASE_URL: z.string().url(),
   NODE_ENV: z.enum(['development', 'test', 'production']).optional(),
   PORT: z.coerce.number().optional().default(3333),
-  JWT_SECRET: z.string(),
+  JWT_PRIVATE_KEY: z.string(),
+  JWT_PUBLIC_KEY: z.string(),
   // JWT_EXPIRES_IN: z.string(),
   // REDIS_HOST: z.string(),
   // REDIS_PORT: z
