@@ -1,7 +1,7 @@
 -- CreateTable
 CREATE TABLE "comments" (
     "id" TEXT NOT NULL,
-    "constent" TEXT NOT NULL,
+    "content" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3),
     "author_id" TEXT NOT NULL,
