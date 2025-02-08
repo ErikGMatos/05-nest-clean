@@ -11,6 +11,7 @@ import { JwtEncrypter } from './jwt-encrypter'
   providers: [
     { provide: Encrypter, useClass: JwtEncrypter },
     { provide: HashCompare, useClass: BcryptHasher },
+    { provide: HashGenerator, useClass: BcryptHasher },
   ],
   exports: [Encrypter, HashCompare, HashGenerator],
 })
