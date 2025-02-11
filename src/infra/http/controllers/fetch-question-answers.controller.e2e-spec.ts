@@ -55,17 +55,17 @@ describe('Fetch question answers (E2E)', () => {
     const questionId = question.id.toString()
 
     const response = await request(app.getHttpServer())
-      .get(`/questions/${questionId}}/answers`)
+      .get(`/questions/${questionId}/answers`)
       .set('Authorization', `Bearer ${accessToken}`)
       .send()
 
     expect(response.status).toBe(200)
 
-    // expect(response.body).toEqual({
-    //   answers: expect.arrayContaining([
-    //     expect.objectContaining({ content: 'Answer 1' }),
-    //     expect.objectContaining({ content: 'Answer 2' }),
-    //   ]),
-    // })
+    expect(response.body).toEqual({
+      answers: expect.arrayContaining([
+        expect.objectContaining({ content: 'Answer 1' }),
+        expect.objectContaining({ content: 'Answer 2' }),
+      ]),
+    })
   })
 })
