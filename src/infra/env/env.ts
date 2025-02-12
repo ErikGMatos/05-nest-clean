@@ -5,18 +5,10 @@ export const envSchema = z.object({
   PORT: z.coerce.number().optional().default(3333),
   JWT_PRIVATE_KEY: z.string(),
   JWT_PUBLIC_KEY: z.string(),
-  // JWT_EXPIRES_IN: z.string(),
-  // REDIS_HOST: z.string(),
-  // REDIS_PORT: z
-  //   .string()
-  //   .transform((value) => Number(value))
-  //   .optional(),
-  // REDIS_PASSWORD: z.string().optional(),
-  // REDIS_TTL: z
-  //   .string()
-  //   .transform((value) => Number(value))
-  //   .optional(),
-  // REDIS_URL: z.string().url().optional(),
+  CLOUDFARE_ACCOUNT_ID: z.string(),
+  AWS_BUCKET_NAME: z.string(),
+  AWS_ACCESS_KEY_ID: z.string(),
+  AWS_SECRET_ACCESS_KEY: z.string(),
 })
 
 export type Env = z.infer<typeof envSchema>
