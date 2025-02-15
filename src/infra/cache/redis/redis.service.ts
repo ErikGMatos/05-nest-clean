@@ -12,6 +12,8 @@ export class RedisService extends Redis implements OnModuleDestroy {
       db: envService.get('REDIS_DB'),
       password: useTLS ? envService.get('REDIS_PASSWORD') : undefined,
       tls: useTLS ? {} : undefined,
+      lazyConnect: true, // only connect when need
+      enableAutoPipelining: true, // put all commands together for call optimization
     })
   }
 
